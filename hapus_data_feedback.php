@@ -2,9 +2,6 @@
 // Memanggil file koneksi.php
 require_once 'koneksi.php';
 
-// Inisialisasi variabel untuk pesan sukses atau error
-$message = '';
-
 // Memastikan bahwa parameter id ada dalam URL
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
