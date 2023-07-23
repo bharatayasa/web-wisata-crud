@@ -1,66 +1,83 @@
 <?php
-// Memanggil file koneksi.php
-require_once 'koneksi.php';
-// Melakukan query untuk mengambil data dari tabel data
-$query = "SELECT id, judul, deskripsi, gambar FROM data";
-$result = mysqli_query($koneksi, $query);
+    // Memanggil file koneksi.php
+    require_once 'koneksi.php';
 
-if (!$result) {
-    die("Error: " . mysqli_error($koneksi));
-}
-?>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Data Tabel</title>
-    <!-- Memanggil file CSS Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        /* Ganti '200px' dengan lebar maksimum yang Anda inginkan */
-        .deskripsi-col {
-            max-width: 200px;
-            overflow: hidden;
-            text-overflow: ellipsis;
+    // Inisialisasi variabel untuk menyimpan pesan kesalahan atau sukses
+    $message = '';
+
+    // Memproses data feedback yang diinputkan oleh pengguna
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $nama = $_POST["nama"];
+        $email = $_POST["email"];
+        $deskripsi = $_POST["deskripsi"];
+
+        // Query untuk memasukkan data ke dalam database
+        $query = "INSERT INTO feedback (nama, email, deskripsi) VALUES ('$nama', '$email', '$deskripsi')";
+        $result = mysqli_query($koneksi, $query);
+
+        if ($result) {
+            $message = "Feedback berhasil dikirim!";
+        } else {
+            $message = "Terjadi kesalahan saat mengirim feedback: " . mysqli_error($koneksi);
         }
-    </style>
+    }
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"/>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="container">
-        <h2>Data Tabel</h2>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Judul</th>
-                    <th>Deskripsi</th>
-                    <th>Gambar</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                // Menampilkan data dari hasil query
-                while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<tr>";
-                    echo "<td>" . $row['id'] . "</td>";
-                    echo "<td>" . $row['judul'] . "</td>";
-                    // Tambahkan class deskripsi-col pada kolom deskripsi dan atribut data-toggle dan data-placement untuk tooltip
-                    echo "<td class='deskripsi-col' data-toggle='tooltip' data-placement='top' title='" . htmlspecialchars($row['deskripsi'], ENT_QUOTES) . "'>" . $row['deskripsi'] . "</td>";
-                    echo "<td><img src='img/" . $row['gambar'] . "' alt='Gambar' width='100'></td>";
-                    echo "<td>"
-                        . "<a href='ubah_data.php?id=" . $row['id'] . "'>"
-                        . "<button class='btn btn-primary'>ubah</button>"
-                        . "</a>"
-                        . "<a href='hapus_data.php?id=" . $row['id'] . "'>"
-                        . "<button class='btn btn-danger'>hapus</button>"
-                        . "</a>"
-                        . "</td>";
-                    echo "</tr>";
-                }
-                ?>
-            </tbody>
-        </table>
-    </div>
 
+<!-- tombol feedback-->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Kirim Feedback</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">your feedback</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+      <form action="" method="post">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name :</label>
+                        <input type="text" class="form-control" id="nama" name="nama" autocomplete="off" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email :</label>
+                        <input type="email" class="form-control" id="email" name="email" autocomplete="off" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="deskripsi" class="form-label">Description :</label>
+                        <textarea class="form-control" id="deskripsi" name="deskripsi" rows="8" required></textarea>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-primary" value="Send Feedback">
+                    </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
 </body>
 </html>

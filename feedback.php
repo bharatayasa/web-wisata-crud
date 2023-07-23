@@ -26,7 +26,8 @@
 <?php if ($message) : ?>
         <div class="alert alert-success alert-dismissible fade show container mt-3" role="alert">
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            <?php echo $message; ?>
+        <?php echo $message; ?>
+        <a href="index.php"><button class="btn btn-primary">Back</button></a>
         </div>
 <?php endif; ?>
 
@@ -63,6 +64,7 @@
     </div>
 </nav>
 <!-- end nav -->
+
 <!-- form -->
 <div class="container-fluid py-5">
         <div class="container">

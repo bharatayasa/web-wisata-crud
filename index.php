@@ -9,6 +9,34 @@
         die("Error: " . mysqli_error($koneksi));
     }
 ?>
+<!-- FEEDBACK -->
+<?php
+    // Inisialisasi variabel untuk menyimpan pesan kesalahan atau sukses
+    $message = '';
+
+    // Memproses data feedback yang diinputkan oleh pengguna
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $nama = $_POST["nama"];
+        $email = $_POST["email"];
+        $deskripsi = $_POST["deskripsi"];
+
+        // Query untuk memasukkan data ke dalam database
+        $query = "INSERT INTO feedback (nama, email, deskripsi) VALUES ('$nama', '$email', '$deskripsi')";
+        $result = mysqli_query($koneksi, $query);
+
+        if ($result) {
+            $message = "Feedback berhasil dikirim!";
+        } else {
+            $message = "Terjadi kesalahan saat mengirim feedback: " . mysqli_error($koneksi);
+        }
+    }
+?>
+<?php if ($message) : ?>
+        <div class="alert alert-success alert-dismissible fade show container mt-3" role="alert">
+        <?php echo $message; ?>
+        <a href="index.php"><button class="btn btn-primary">Refresh</button></a>
+        </div>
+<?php endif; ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -137,7 +165,7 @@
     </div>
     <!-- end of modal -->
 
-    <!-- card -->
+    <!-- card content-->
     <div class="container-fluid py-5">
       <div class="container">
         <h2 class="text-center mb-5">Our Services</h2>
@@ -189,15 +217,75 @@
     <!-- end of card -->
 
     <!-- feedback -->
+    <?php
+      // Melakukan query untuk mengambil data dari tabel feedback
+      $query = "SELECT id, nama, email, deskripsi, tanggal_submit FROM feedback";
+      $feedback = mysqli_query($koneksi, $query);
+
+      if (!$feedback) {
+          die("Error: " . mysqli_error($koneksi));
+      }
+    ?>
+    <!-- form modal feedback  -->
+  <div class="modal fade" id="feedback" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">your feedback</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <form action="" method="post">
+              <div class="mb-3">
+                  <label for="name" class="form-label">Name :</label>
+                  <input type="text" class="form-control" id="nama" name="nama" autocomplete="off" required>
+              </div>
+              <div class="mb-3">
+                  <label for="email" class="form-label">Email :</label>
+                  <input type="email" class="form-control" id="email" name="email" autocomplete="off" required>
+              </div>
+              <div class="mb-3">
+                  <label for="deskripsi" class="form-label">Description :</label>
+                  <textarea class="form-control" id="deskripsi" name="deskripsi" rows="8" required></textarea>
+              </div>
+              <div>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <input type="submit" class="btn btn-primary" value="Send Feedback">
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+    <!-- end form modal feedback  -->
+
+    <!-- feedback -->
     <div class="container-fluid py-5">
       <div class="container">
-        <h2 class="text-center mb-5">Feedback</h2>
-        <div class="col-lg-3 col-md-4 col-sm-6 mb-5">
-
+        <h2 class="text-center">Feedback</h2>
+        <!-- tombol feedback-->
+        <div class="text-center mb-5">
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#feedback" data-bs-whatever="@getbootstrap">Give us your feedback</button>
+        </div>
+        <div class="col-12">
+          <div class="col-lg-12">
+            <div class="row">
+              <?php while ($row = mysqli_fetch_assoc($feedback)) : ?>
+              <div class="col-lg-3 col-md-4 col-sm-6 mb-5">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                      <h5 class="card-title">By : <?php echo $row['nama']; ?></h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Date : <?php echo $row['tanggal_submit']; ?></h6>
+                      <p class="card-text"><?php echo $row['deskripsi']; ?></p>
+                    </div>
+                </div>
+              </div>
+              <?php endwhile; ?>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-
     <!--end of feedback -->
 
     <script
