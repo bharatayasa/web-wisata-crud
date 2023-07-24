@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 23 Jul 2023 pada 14.01
+-- Waktu pembuatan: 24 Jul 2023 pada 15.05
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 8.2.0
 
@@ -60,16 +60,18 @@ CREATE TABLE `feedback` (
   `nama` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `deskripsi` text NOT NULL,
-  `tanggal_submit` timestamp NOT NULL DEFAULT current_timestamp()
+  `tanggal_submit` timestamp NOT NULL DEFAULT current_timestamp(),
+  `rating` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `feedback`
 --
 
-INSERT INTO `feedback` (`id`, `nama`, `email`, `deskripsi`, `tanggal_submit`) VALUES
-(26, 'tes page', 'aa@g', 'isajdasj', '2023-07-23 06:16:58'),
-(35, 'feed dari index', 'd@e', 'sd qdq', '2023-07-23 07:28:57');
+INSERT INTO `feedback` (`id`, `nama`, `email`, `deskripsi`, `tanggal_submit`, `rating`) VALUES
+(48, 'berhasil ', 'd@D', 'lorem ', '2023-07-24 07:14:40', 3),
+(51, 'tes', 'S@d', 'sndkn', '2023-07-24 07:48:47', 4),
+(52, 'bharata', 'a@T', 'jadilah seperti tempe., tidak ada yang tahu ', '2023-07-24 07:53:07', 4);
 
 -- --------------------------------------------------------
 
@@ -120,13 +122,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `data`
 --
 ALTER TABLE `data`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT untuk tabel `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
