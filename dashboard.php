@@ -18,7 +18,7 @@
     }
 
     // Melakukan query untuk mengambil data dari tabel feedback
-    $query = "SELECT id, nama, email, deskripsi, tanggal_submit FROM feedback";
+    $query = "SELECT id, nama, email, deskripsi, tanggal_submit, rating FROM feedback";
     $feedback = mysqli_query($koneksi, $query);
 
     if (!$feedback) {
@@ -32,6 +32,7 @@
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-7lmFj/yNJ+2rzo6WnnL+hD+EH4WucHeHrG9sO2ULVZrlBduND/M6Kv1s3iFvI+9ar7Y9A7jI6PlG30tGqQ3mQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Web Wisata</title>
 </head>
 <style>
@@ -133,6 +134,7 @@
                     <th class="text-center">Email</th>
                     <th class="text-center">Deskripsi</th>
                     <th class="text-center">Tanggal</th>
+                    <th class="text-center">Rating</th>
                     <th class="text-center">Aksi</th>
                 </tr>
             </thead>
@@ -160,6 +162,10 @@
                             <?php echo $row['tanggal_submit']; ?>
                         </td>
                         
+                        <td>
+                            <?php echo $row['rating'] . '/5'; ?>
+                        </td>
+
                         <td class="text-center">
                             <a href="hapus_data_feedback.php?id=<?php echo $row['id']; ?>"><button class="btn btn-danger">hapus</button></a>
                         </td>
@@ -170,5 +176,6 @@
     </div>
     <hr class="container">
     <!--akhir tabel -->
+
 </body>
 </html>

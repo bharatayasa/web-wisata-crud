@@ -1,7 +1,6 @@
 body {
     scroll-behavior: smooth;
 }
-
 .banner {
     height: 80vh;
     background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('img/tracking.JPG');
@@ -18,7 +17,7 @@ body {
 
 .card {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-    opacity: 0;
+    opacity: 1;
     transition: opacity 0.3s, box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
