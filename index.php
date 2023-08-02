@@ -90,17 +90,23 @@
               Contact us
             </h5>
           </div>
-
           <!-- body -->
           <div class="modal-body text-center">
             <div class="mb-3">
-              <button type="button" class="btn btn-success">watsapp</button>
+              <a href="https://wa.me/6287753182616">
+                
+                <button type="button" class="btn btn-success">Agung</button>
+              </a>
             </div>
             <div class="mb-3">
-              <button type="button" class="btn btn-success">watsapp</button>
+              <a href="https://wa.me/6285792872944">
+                <button type="button" class="btn btn-success">AgungDwik</button>
+              </a>
             </div>
             <div class="mb-3">
-              <button type="button" class="btn btn-success">watsapp</button>
+              <a href="https://wa.me/6287761494210">
+                <button type="button" class="btn btn-success">Dwik</button>
+              </a>
             </div>
           </div>
           <!-- footer -->
