@@ -1,15 +1,21 @@
 <?php
     // Konfigurasi koneksi database
-    $host = "localhost";
-    $username = "root";
-    $password = "";
-    $database = "wisata";
+    require 'vendor/autoload.php';
 
-    $koneksi = mysqli_connect($host, $username, $password, $database);
-
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+    $dotenv->load();
+    
+    $dbHost = $_ENV['DB_HOST'];
+    $dbUser = $_ENV['DB_USER'];
+    $dbPass = $_ENV['DB_PASS'];
+    $dbDatabase = $_ENV['DB_DATABASE'];
+    
+    $koneksi = mysqli_connect($dbHost, $dbUser, $dbPass, $dbDatabase);
+    
     if (!$koneksi) {
         die("Koneksi gagal: " . mysqli_connect_error());
-    }else{
+    } else {
         // echo "koneksi berhasil"; 
     }
+    
 ?>

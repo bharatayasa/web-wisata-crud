@@ -78,19 +78,19 @@
     <div class="w3-quarter">
         <img src="teams/ajik.jpeg" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
         <h3>Agung Udayana</h3>
-        <p>Owner</p>
+        <p>Manager Operational</p>
     </div>
 
     <div class="w3-quarter">
         <img src="teams/biang.jpeg" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
         <h3>Ayu Dwilestari</h3>
-        <p>Owner</p>
+        <p>Manager Tour & Traveling</p>
     </div>
 
     <div class="w3-quarter">
         <img src="teams/gung.jpeg" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
         <h3>Agung Dananjaya</h3>
-        <p>Owner</p>
+        <p>Direktur</p>
     </div>
 </div>
 </div>

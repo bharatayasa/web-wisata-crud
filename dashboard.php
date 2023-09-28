@@ -44,7 +44,6 @@
 <body>
     <div class="container text-center mb-5 mt-3">
         <h2>Selamat datang, <?php echo $_SESSION["username"]; ?>!</h2>
-        <p>Ini adalah halaman dashboard admin</p>
         <a href="logout.php" class="btn btn-primary">Logout</a>
     </div>
     <hr class="container">

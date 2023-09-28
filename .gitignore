@@ -1,4 +1,6 @@
 /img
 /teams
+/vendor
 register.php
 process_register.php
+.env
