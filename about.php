@@ -68,9 +68,6 @@
     <a href="login.php">
         <button class="btn btn-primary">login as admin</button>
     </a>
-    <a href="register.php">
-        <button>register</button>
-    </a>
 </div>
 
 <div class="w3-container w3-padding-64 w3-center" id="team">
