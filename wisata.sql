@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 24 Jul 2023 pada 15.05
+-- Waktu pembuatan: 23 Jan 2024 pada 03.51
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 8.2.0
 
@@ -47,7 +47,9 @@ INSERT INTO `data` (`id`, `judul`, `deskripsi`, `gambar`) VALUES
 (23, 'Tanah Lot', 'Tanah Lot is a unique beach because the temple is located on a rock in the middle of the sea near the beach. The rock is separated from other rocks. And when the tide is high, Tanah Lot Temple looks floating because it is surrounded by the sea with waves', 'tanahlot.jpg'),
 (24, 'Snorkling', 'Bali has water tourism whose beauty is unbeatable. One of them is snorkeling at Nusa Penida clearer water beautiful coral reefs have the best story for your holiday', 'nyilem.jpg'),
 (25, 'Penglipuran', 'acationing to Bali can not only spoil your eyes on the beach. Penglipuran Village is also a must-know tourist destination. This village has existed since 700 years ago so it is one of the oldest villages in Bali. The name Penglipuran Village comes from the Balinese word Pengling Pura which means a place to commemorate the ancestors.', 'penglipuran.JPG'),
-(26, 'Istana Ubud', 'Ubud Palace, officially Puri Saren Agung is a historical building complex in Ubud Gianyar', 'ubud.JPG');
+(26, 'Istana Ubud', 'Ubud Palace, officially Puri Saren Agung is a historical building complex in Ubud Gianyar', 'ubud.JPG'),
+(32, 'tes tambah ubah ', 'askdjhasjdhsjdsadna ubah ', 'Screenshot 2023-11-05 at 23.08.50.png'),
+(33, 'ahdjadh', 'sd msand', 'bharata.jpg');
 
 -- --------------------------------------------------------
 
@@ -63,15 +65,6 @@ CREATE TABLE `feedback` (
   `tanggal_submit` timestamp NOT NULL DEFAULT current_timestamp(),
   `rating` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data untuk tabel `feedback`
---
-
-INSERT INTO `feedback` (`id`, `nama`, `email`, `deskripsi`, `tanggal_submit`, `rating`) VALUES
-(48, 'berhasil ', 'd@D', 'lorem ', '2023-07-24 07:14:40', 3),
-(51, 'tes', 'S@d', 'sndkn', '2023-07-24 07:48:47', 4),
-(52, 'bharata', 'a@T', 'jadilah seperti tempe., tidak ada yang tahu ', '2023-07-24 07:53:07', 4);
 
 -- --------------------------------------------------------
 
@@ -90,7 +83,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`) VALUES
-(2, 'admin', '$2y$10$44pgTpc2pYq/plpHyvphku8Vv5aZimviBKaOpOYoGpgq8lmzPbbai');
+(2, 'admin', '$2y$10$44pgTpc2pYq/plpHyvphku8Vv5aZimviBKaOpOYoGpgq8lmzPbbai'),
+(4, 'agung', '$2y$10$9HLNPmLYAtAsfPPBluEXDuJSXQygwGY8b.TeV.BJwcmnZ3wdp4yPi'),
+(5, 'adminnnn', '$2y$10$bWfijT6eyfq0djH//7YEYuRVCY.liWGtPuTVGgeBo6TaP8WFiS/Aq');
 
 --
 -- Indexes for dumped tables
@@ -122,19 +117,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `data`
 --
 ALTER TABLE `data`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT untuk tabel `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

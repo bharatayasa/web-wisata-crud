@@ -17,5 +17,4 @@
     } else {
         // echo "koneksi berhasil"; 
     }
-    
 ?>
